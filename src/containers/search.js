@@ -11,21 +11,22 @@ injectTapEventPlugin();
 import YTSearch from 'youtube-api-search';
 const API_KEY = 'AIzaSyCE6omq_R_IvG6cyjPfgwbZbFDSbjx8mag';
 
-import { setNewVideos } from '../actions';
+import { setNewVideos, selectVideo } from '../actions';
 
 
 
-const Search = ({setNewVideos}) => {
+const Search = ({setNewVideos, selectVideo}) => {
 
     const videoSearch = (term) => {
         YTSearch({key: API_KEY, term: term}, (videos) => {
             setNewVideos(videos);
+            selectVideo(videos[0]);
         });
     };
 
     const onInputChange = (e) => { 
         e.persist();
-        debounce(1000, () => {
+        debounce(500, () => {
             videoSearch(e.target.value);
         })();
     };
@@ -49,7 +50,7 @@ const Search = ({setNewVideos}) => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ setNewVideos }, dispatch);
+  return bindActionCreators({ setNewVideos, selectVideo }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(Search);

@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux';
 
 import Search from './search';
-import VideoMain from './video_main';
+import VideoMain from '../components/video_main';
+import VideoList from '../components/videos_list';
 
-const App = ({videoList}) => {
+const App = ({videoList, selectedVideo}) => {
 
 	return (
 		<div>
 			<Search />
-			<VideoMain videoList={videoList}/>
+			<div className="row">
+				<VideoMain selectedVideo={selectedVideo}/>
+				<VideoList videoList={videoList}/>
+			</div>
 		</div>
 	);
 
@@ -19,7 +22,8 @@ const App = ({videoList}) => {
 
 const mapStateToProps = (state) => {
   	return {
-    	videoList: state.videoList
+    	videoList: state.videoList,
+    	selectedVideo: state.selectedVideo
   	};
 };
 

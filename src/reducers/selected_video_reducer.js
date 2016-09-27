@@ -1,8 +1,8 @@
-const videoList = (state = [], action) => {
+const selectedVideo = (state = {}, action) => {
 
 	switch (action.type) {
 
-		case 'SET_NEW_VIDEOS':
+		case 'SELECT_VIDEO':
       		return action.payload;
 
     	default:
@@ -12,5 +12,5 @@ const videoList = (state = [], action) => {
 
 };
 
-export default videoList;
+export default selectedVideo;
 
