@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import searchTerm from './searchTerm';
+import videoList from './videoList';
 
 const rootReducer = combineReducers({
-  	searchTerm
+  	videoList
 });
 
 export default rootReducer;

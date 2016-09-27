@@ -1,8 +1,8 @@
-export const changeSearchTerm = (term) => {
+export const setNewVideos = (videos) => {
 
 	return {
-    	type: 'CHANGE_SEARCH_TERM',
-    	payload: term
+    	type: 'SET_NEW_VIDEOS',
+    	payload: videos
   	};
 
 };

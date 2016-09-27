@@ -1,26 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 import Search from './search';
 import VideoMain from './video_main';
-import reducers from '../reducers'
 
-const API_KEY = 'AIzaSyCE6omq_R_IvG6cyjPfgwbZbFDSbjx8mag';
-let store = createStore(reducers);
-
-const App = () => {
+const App = ({videoList}) => {
 
 	return (
-		<Provider store={store}>
-			<div>
-				<Search />
-				<VideoMain />
-			</div>
-		</Provider>
+		<div>
+			<Search />
+			<VideoMain videoList={videoList}/>
+		</div>
 	);
 
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  	return {
+    	videoList: state.videoList
+  	};
+};
+
+export default connect(mapStateToProps)(App);
